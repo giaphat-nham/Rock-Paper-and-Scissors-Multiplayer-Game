@@ -34,18 +34,18 @@ class Button:
 
 
 def redrawWindow(win, game, p):
-    win.fill((128,128,128))
+    win.fill((255, 255, 255))
 
     if not(game.connected()):
-        font = pygame.font.SysFont("comicsans", 80)
-        text = font.render("Waiting for Player...", 1, (255,0,0), True)
+        font = pygame.font.SysFont("comicsans", 60)
+        text = font.render("Waiting for Player...", 1, (140, 120, 204), True)
         win.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
     else:
         font = pygame.font.SysFont("comicsans", 60)
-        text = font.render("Your Move", 1, (0, 255,255))
+        text = font.render("Your Move", 1, (140, 120, 204))
         win.blit(text, (80, 200))
 
-        text = font.render("Opponents", 1, (0, 255, 255))
+        text = font.render("Opponents", 1, (140, 120, 204))
         win.blit(text, (380, 200))
 
         move1 = game.get_player_move(0)
@@ -81,7 +81,7 @@ def redrawWindow(win, game, p):
     pygame.display.update()
 
 
-btns = [Button("Rock", 50, 500, (0,0,0)), Button("Scissors", 250, 500, (255,0,0)), Button("Paper", 450, 500, (0,255,0))]
+btns = [Button("Rock", 50, 500, (146, 146, 214)), Button("Scissors", 250, 500, (146, 146, 214)), Button("Paper", 450, 500, (146, 146, 214))]
 def main():
     run = True
     clock = pygame.time.Clock()
@@ -108,11 +108,11 @@ def main():
                 print("Couldn't get game")
                 break
 
-            font = pygame.font.SysFont("comicsans", 90)
+            font = pygame.font.SysFont("comicsans", 80)
             if (game.winner() == 1 and player == 1) or (game.winner() == 0 and player == 0):
-                text = font.render("You Won!", 1, (255,0,0))
+                text = font.render("You Won!", 1, (0,255,0))
             elif game.winner() == -1:
-                text = font.render("Tie Game!", 1, (255,0,0))
+                text = font.render("Tie Game!", 1, (255,255,0))
             else:
                 text = font.render("You Lost...", 1, (255, 0, 0))
 
@@ -144,10 +144,10 @@ def menu_screen():
 
     while run:
         clock.tick(60)
-        win.fill((128, 128, 128))
+        win.fill((255, 255, 255))
         font = pygame.font.SysFont("comicsans", 60)
-        text = font.render("Click to Play!", 1, (255,0,0))
-        win.blit(text, (100,200))
+        text = font.render("Click to Play!", 1, (140, 120, 204))
+        win.blit(text, (200,250))
         pygame.display.update()
 
         for event in pygame.event.get():
